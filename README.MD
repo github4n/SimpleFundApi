@@ -44,7 +44,9 @@ FundUtil.getInfoString(FundInfo info);
 getInfoListString(List<FundInfo> infoList)
 ```
 
-输出样例:
+输出样例:  
+
+
 > =====基金信息=====  
 > ------005763------  
 > 基金名称: 中欧电子信息产业沪港深股票C  
@@ -67,7 +69,7 @@ getInfoListString(List<FundInfo> infoList)
 > 估值日期: 2019-03-28 15:00  
 > 估算净值: 0.9290  
 > 涨跌幅度: -1.35%  
-> ==============  
+
 
 
 ## 许可证
