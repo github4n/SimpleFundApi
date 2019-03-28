@@ -14,12 +14,12 @@ v1.0.0-release
 ## 使用方法:
 
 ```java
-getFund(String id);
+FundUtil.getFund(String id);
 ```
 或:
 
 ```java
-getFunds(List<String> id);
+FundUtil.getFunds(List<String> id);
 ```
 
 将会返回一个(或多个)FundInfo对象，包含了基金信息。
@@ -41,7 +41,7 @@ FundUtil.getInfoString(FundInfo info);
 > 涨跌幅度: -0.38%  
 
 ```java
-getInfoListString(List<FundInfo> infoList)
+FundUtil.getInfoListString(List<FundInfo> infoList)
 ```
 
 输出样例:  
