@@ -1,6 +1,8 @@
 package com.flannep.financial.simplefundapi;
 
 import com.flannep.financial.simplefundapi.exception.FundIDNotExistException;
+import com.flannep.financial.simplefundapi.viewer.AbstractViewer;
+import com.flannep.financial.simplefundapi.viewer.DetailViewer;
 import net.sf.json.JSONObject;
 
 import java.util.ArrayList;
@@ -43,33 +45,33 @@ public class FundUtil {
         return result;
     }
 
-
+    /**
+     * 获取单只基金信息
+     *
+     * @param info
+     * @return
+     * @deprecated 请使用Viewer获取基金信息
+     */
+    @Deprecated
     public static String getInfoString(FundInfo info) {
-        String content = "------%s------\n" +
-                "基金名称: %s\n" +
-                "收盘日期: %s\n" +
-                "收盘净值: %s\n" +
-                "估值日期: %s\n" +
-                "估算净值: %s\n" +
-                "涨跌幅度: %s%%\n";
-
-        return String.format(content
-                , info.getFundCode()
-                , info.getName()
-                , info.getYesterdayNavDate()
-                , info.getYesterdayNav()
-                , info.getTodayNavTime()
-                , info.getTodayNav()
-                , info.getChangePct());
-
+        AbstractViewer viewer = new DetailViewer();
+        return AbstractViewer.getInfo(viewer,info);
     }
 
+    /**
+     * 获取基金信息
+     *
+     * @param infoList
+     * @return
+     * @deprecated 请使用Viewer获取基金信息
+     */
+    @Deprecated
     public static String getInfoListString(List<FundInfo> infoList) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("=====基金信息=====\n");
-        for (FundInfo fundInfo : infoList) {
-            sb.append(getInfoString(fundInfo));
+        for (String str : AbstractViewer.getInfo(new DetailViewer(), infoList)) {
+            sb.append(str);
         }
         sb.append("==============\n");
         return sb.toString();

@@ -4,7 +4,7 @@
 
 ## 版本
 ```
-v1.0.0-release
+v1.1.0-release
 ```
 
 ## 依赖
@@ -24,13 +24,20 @@ FundUtil.getFunds(List<String> id);
 
 将会返回一个(或多个)FundInfo对象，包含了基金信息。
 
-FundUtil还提供了几个格式化输出的方法:
+## Viewer
+Viewer用于格式化基金信息，所有Viewer应该继承AbstractViewer。
 
 ```java
-FundUtil.getInfoString(FundInfo info);
+AbstractViewer.getInfo(AbstractViewer viewer,FundInfo info);
+AbstractViewer.getInfo(AbstractViewer viewer,List<FundInfo> infoList);
 ```
 
-输出样例:
+
+输出样例1:
+
+```java
+AbstractViewer.getInfo(new DetailViewer(),FundInfo info);
+```
 
 > ------005918------  
 > 基金名称: 天弘沪深300指数C  
@@ -40,14 +47,15 @@ FundUtil.getInfoString(FundInfo info);
 > 估算净值: 0.9896  
 > 涨跌幅度: -0.38%  
 
+
+输出样例2: 
+
 ```java
-FundUtil.getInfoListString(List<FundInfo> infoList)
+AbstractViewer.getInfo(new DetailViewer(),fundList);
 ```
+ 
+注:具体的输出效果取决于实例化的Viewer
 
-输出样例:  
-
-
-> =====基金信息=====  
 > ------005763------  
 > 基金名称: 中欧电子信息产业沪港深股票C  
 > 收盘日期: 2019-03-27  
@@ -77,5 +85,8 @@ FundUtil.getInfoListString(List<FundInfo> infoList)
 MIT LICENSE
 
 ## 更新日志
+> 2019-03-30
+> 废弃了FundUtil中的格式化基金信息方法，使用Viewer代替
+>
 > 2019-03-28
 > 发布v1.0.0 release
