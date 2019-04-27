@@ -4,12 +4,12 @@
 
 ## 版本
 ```
-v1.1.0-release
+v1.2.0
 ```
 
 ## 依赖
 1. okhttp 3.4
-2. net.sf.json
+2. gson
 
 ## 使用方法:
 
@@ -79,14 +79,18 @@ AbstractViewer.getInfo(new DetailViewer(),fundList);
 > 涨跌幅度: -1.35%  
 
 
-
-## 许可证
-
-MIT LICENSE
-
 ## 更新日志
-> 2019-03-30
+
+> V1.2.0 2019-04-27
+>
+> 1. 重构了FundInfo类，使用javabean
+> 2. 移除了net.sf.json依赖，增加了gson依赖
+> 3. 修改了序列化后的字段名称
+>
+> V1.1.0 2019-03-30  
+>
 > 废弃了FundUtil中的格式化基金信息方法，使用Viewer代替
 >
-> 2019-03-28
+> V1.0.0 2019-03-28  
+>
 > 发布v1.0.0 release

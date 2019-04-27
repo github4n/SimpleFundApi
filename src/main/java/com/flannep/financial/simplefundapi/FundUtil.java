@@ -3,7 +3,7 @@ package com.flannep.financial.simplefundapi;
 import com.flannep.financial.simplefundapi.exception.FundIDNotExistException;
 import com.flannep.financial.simplefundapi.viewer.AbstractViewer;
 import com.flannep.financial.simplefundapi.viewer.DetailViewer;
-import net.sf.json.JSONObject;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,10 +24,11 @@ public class FundUtil {
         String webContent = NetUtil.sendGet(String.format("http://fundgz.1234567.com.cn/js/%s.js", fundID), header);
         webContent = webContent.substring(webContent.indexOf("(") + 1, webContent.lastIndexOf(")"));
         if (webContent.contains("errText")) {
-            throw new FundIDNotExistException("基金ID不存在");
+            throw new FundIDNotExistException("基金ID: " + fundID + " 不存在");
         }
-        JSONObject json = JSONObject.fromObject(webContent);
-        return new FundInfo(json);
+        Gson gson = new Gson();
+        FundInfo funds = gson.fromJson(webContent, FundInfo.class);
+        return funds;
     }
 
     /**
@@ -55,7 +56,7 @@ public class FundUtil {
     @Deprecated
     public static String getInfoString(FundInfo info) {
         AbstractViewer viewer = new DetailViewer();
-        return AbstractViewer.getInfo(viewer,info);
+        return AbstractViewer.getInfo(viewer, info);
     }
 
     /**

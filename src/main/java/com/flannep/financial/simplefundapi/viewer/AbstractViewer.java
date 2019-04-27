@@ -7,8 +7,6 @@ import java.util.List;
 
 public abstract class AbstractViewer {
 
-    public abstract String getInfo(FundInfo info);
-
     /**
      * 获取基金信息
      *
@@ -34,5 +32,7 @@ public abstract class AbstractViewer {
     public static String getInfo(AbstractViewer viewer, FundInfo info) {
         return viewer.getInfo(info);
     }
+
+    public abstract String getInfo(FundInfo info);
 
 }

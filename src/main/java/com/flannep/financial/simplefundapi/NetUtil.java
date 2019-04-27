@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class NetUtil {
 
-    static OkHttpClient client = new OkHttpClient();
+    private static OkHttpClient client = new OkHttpClient();
 
     /**
      * 发送get请求
@@ -73,7 +73,7 @@ public class NetUtil {
     private static byte[] getByte(String url, Map<String, String> header) throws Exception {
         Request.Builder builder = new Request.Builder();
         builder.url(url);
-        if (header!=null){
+        if (header != null) {
             for (String key : header.keySet()) {
                 String value = header.get(key);
                 builder.header(key, value);

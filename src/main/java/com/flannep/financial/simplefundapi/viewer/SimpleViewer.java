@@ -13,7 +13,7 @@ public class SimpleViewer extends AbstractViewer {
         return String.format(content
                 , info.getFundCode()
                 , info.getName()
-                , info.getTodayNavTime()
+                , info.getTodaysNavTime()
                 , info.getChangePct());
     }
 }

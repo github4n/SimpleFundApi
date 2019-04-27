@@ -2,7 +2,7 @@ package com.flannep.financial.simplefundapi.viewer;
 
 import com.flannep.financial.simplefundapi.FundInfo;
 
-public class DetailViewer  extends AbstractViewer{
+public class DetailViewer extends AbstractViewer {
     @Override
     public String getInfo(FundInfo info) {
         String content = "------%s------\n" +
@@ -18,8 +18,8 @@ public class DetailViewer  extends AbstractViewer{
                 , info.getName()
                 , info.getYesterdayNavDate()
                 , info.getYesterdayNav()
-                , info.getTodayNavTime()
-                , info.getTodayNav()
+                , info.getTodaysNavTime()
+                , info.getTodaysNav()
                 , info.getChangePct());
     }
 }

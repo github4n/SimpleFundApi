@@ -1,109 +1,96 @@
+/**
+ * Copyright 2019 bejson.com
+ */
 package com.flannep.financial.simplefundapi;
 
-import net.sf.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 /**
- * 代表一个基金的简单信息
+ * Auto-generated: 2019-04-27 10:21:30
+ *
+ * @author bejson.com (i@bejson.com)
+ * @website http://www.bejson.com/java2pojo/
  */
 public class FundInfo {
-    private JSONObject json;
 
-    FundInfo(JSONObject json) {
-        if (json == null) {
-            throw new NullPointerException("fundinfo json can not be null");
-        }
-        this.json = json;
-    }
+    @SerializedName(value = "fundCode", alternate = {"fundcode"})
+    private String fundCode;
+
+    @SerializedName(value = "fundName", alternate = {"name"})
+    private String name;
+    @SerializedName(value = "yesterdayNavDate", alternate = {"jzrq"})
+    private String yesterdayNavDate;
+    @SerializedName(value = "yesterdayNav", alternate = {"dwjz"})
+    private String yesterdayNav;
+    @SerializedName(value = "todaysNav", alternate = {"gsz"})
+    private String todaysNav;
+    @SerializedName(value = "changePct", alternate = {"gszzl"})
+    private String changePct;
+    @SerializedName(value = "todaysNavTime", alternate = {"gztime"})
+    private String todaysNavTime;
 
 
-    /**
-     * 获取基金ID
-     *
-     * @return 例:001630
-     */
     public String getFundCode() {
-        if (json.containsKey("fundcode")) {
-            return json.getString("fundcode");
-        }
-        return null;
+        return fundCode;
     }
 
-    /**
-     * 获取基金名称
-     *
-     * @return 例:天弘中证计算机主题指数C
-     */
     public String getName() {
-        if (json.containsKey("name")) {
-            return json.getString("name");
-        }
-        return null;
+        return name;
     }
 
-    /**
-     * 上一个交易日的净值日期
-     *
-     * @return 例:2019-03-27
-     */
     public String getYesterdayNavDate() {
-        if (json.containsKey("jzrq")) {
-            return json.getString("jzrq");
-        }
-        return null;
+        return yesterdayNavDate;
     }
 
-    /**
-     * 获取单位净值
-     *
-     * @return 例如:0.7269
-     */
-    public String getYesterdayNav() {
-        if (json.containsKey("dwjz")) {
-            return json.getString("dwjz");
-        }
-        return null;
+    public double getYesterdayNav() {
+        return Double.valueOf(yesterdayNav);
     }
 
-    /**
-     * 获取当前的估算净值
-     *
-     * @return 例：0.7174
-     */
-    public String getTodayNav() {
-        if (json.containsKey("gsz")) {
-            return json.getString("gsz");
-        }
-        return null;
+    public double getTodaysNav() {
+        return Double.valueOf(todaysNav);
     }
 
-    /**
-     * 获取当前估算净值和上一日净值的涨跌幅
-     *
-     * @return 例: -1.30
-     */
-    public String getChangePct() {
-        if (json.containsKey("gszzl")) {
-            return json.getString("gszzl");
-        }
-        return null;
+    public double getChangePct() {
+        return Double.valueOf(changePct);
     }
 
-    /**
-     * 获取估值日期
-     *
-     * @return 例: 2019-03-28 15:00
-     */
-    public String getTodayNavTime() {
-        if (json.containsKey("gztime")) {
-            return json.getString("gztime");
-        }
-        return null;
+    public String getTodaysNavTime() {
+        return todaysNavTime;
     }
 
-    //public String
+
+    public void setFundCode(String fundCode) {
+        this.fundCode = fundCode;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setYesterdayNavDate(String yesterdayNavDate) {
+        this.yesterdayNavDate = yesterdayNavDate;
+    }
+
+    public void setYesterdayNav(double yesterdayNav) {
+        this.yesterdayNav = yesterdayNav + "";
+    }
+
+    public void setTodaysNav(double todaysNav) {
+        this.todaysNav = todaysNav + "";
+    }
+
+    public void setChangePct(double changePct) {
+        this.changePct = changePct + "";
+    }
+
+    public void setTodaysNavTime(String todaysNavTime) {
+        this.todaysNavTime = todaysNavTime;
+    }
 
     @Override
     public String toString() {
-        return json.toString();
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }
